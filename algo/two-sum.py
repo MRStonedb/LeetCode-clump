@@ -1,7 +1,7 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
+"""
+给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+"""
 
-# 返回列表中 两个数之和等于某个给定数的下标
 class Solution:
     # 两次循环
     def twoSum(self, nums, target):
@@ -32,6 +32,27 @@ class Solution:
             if _dict.get(target - m) is not None:
                 return [_dict.get(target - m), i]
             _dict[m] = i
+
+
+
+class SolutionA(object):
+    @staticmethod
+    def twoSum(nums, target):
+        """
+        静态方法，省去对象初始化，节省时间
+        """
+        num_dict = {}
+        for index, value in enumerate(nums):
+            another_num = target - value
+            if another_num in num_dict:
+                return [num_dict[another_num], index]
+            num_dict[value] = index
+        return None
+                
+nums = [2, 7, 11, 15]
+target = 17          
+print(SolutionA.twoSum(nums, target))
+
 
  
 nums = [2,5,5,7,8,5]
